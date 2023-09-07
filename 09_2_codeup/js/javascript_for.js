@@ -190,36 +190,222 @@
 //   }
 //   sum = a[min-1]+a[max-1]
 // }
-
 // alert(sum);
+
 // 1273
 
+// let a = Number(prompt())
+// let nul =""
+// for(let i=1;i<=a;i++){
+//     if(a%i==0){
+//         nul+=i+" "
+//     }
+// }
+// alert(nul)
+
 // 1274
+// let a = Number(prompt())
+// let cnt = 0
+// for(let i=1;i<=a;i++){
+//     if(a%i==0){
+//         cnt++
+//     }
+// }
+// if(cnt==2){
+//     alert("prime")
+// }else{
+//     alert("not prime")
+// }
+// alert(nul)
 
 // 1275
+// let a = prompt().split(" ").map(Number)
+// alert(Math.pow(a[0],a[1]))
 
 // 1276
+// let a = Number(prompt())
+// let n = 1
+// for(let i=a;i>0;i--){
+//     n*=i
+// }
+// alert(n)
 
 // 1277
+// let a = Number(prompt())
+// let b = prompt().split(" ").map(Number)
+// let nul = ""
+// for(let i =0; i<a;i++){
+//     if(i==0 || i==a-1 || i== (a-1)/2){
+//         nul += b[i] + " "
+//     }
+// }
+// alert(nul)
 
 // 1278
+// let a = Number(prompt())
+// let cnt =0;
+// if(a>0){
+// while(true){
+// a = parseInt(a/10)
+// cnt++
+// if(a==0){
+// break;
+// }
+// }
+// }
+// alert(cnt)
 
 // 1279
+// let a = prompt().split(" ").map(Number)
+// let sum =0
+// for(let i =a[0];i<=a[1];i++){
+//     if(i%2==0){
+//         sum -=i
+//     }else{
+//         sum +=i
+//     }
+// }
+// alert(sum)
 
 // 1280
+// let a = prompt().split(" ").map(Number);
+// let sum = 0;
+// let nul = "";
+// for (let i = a[0]; i <= a[1]; i++) {
+//   if (i % 2 == 0) {
+//     nul += "+" + i
+//     sum -= i;
+//   } else {
+//     nul += "-" + i
+//     sum += i;
+//   }
+// }
+// alert(nul+"=" + sum);
 
 // 1281
+// let a = prompt().split(" ").map(Number);
+// let sum = 0;
+// let nul = "";
+// for (let i = a[0]; i <= a[1]; i++) {
+//   if (i % 2 == 0) {
+//     nul += "-" + i
+//     sum -= i;
+//   } else {
+//     nul += "+" + i
+//     sum += i;
+//   }
+// }
+// alert(nul+"=" + sum);
 
 // 1282
+// let a = prompt().split(" ").map(Number);
+// let sum = 0;
+// let nul = "";
+// for (let i = a[0]; i <= a[1]; i++) {
+//   if (i % 2 == 1 && nul == "") {
+//     nul += i;
+//     sum += i;
+//   } else if (i % 2 == 0) {
+//     nul += "-" + i;
+//     sum -= i;
+//   } else {
+//     nul += "+" + i;
+//     sum += i;
+//   }
+// }
+// alert(nul + "=" + sum);
 
 // 1283
+// let a = prompt().split("\n")
+// let b = a[2].split(" ")
+// let sum = a[0]
+// for(i=0;i<a[1];i++){
+// sum = (sum/100) * b[i]
+// }
+// alert(sum-a[0])
 
 // 1284
+// let a = Number(prompt());
+// let cnt = 0;
+// let nul = "";
+// for (let i = 1; i <= a; i++) {
+//     cnt = 0;
+//   for (let j = 1; j <= i; j++) {
+//     if (i % j == 0) {
+//       cnt++;
+//     }
+//   }
+//   if (cnt == 2) {
+//     nul += i +" "
+//   }
+// }
+// let b = nul.split(" ").map(Number)
+// let min = b[0]
+// let bl = b.length
+// let max = b[b.length-1]
+// let nul2 =""
+// for(let i = 0;i<bl;i++){
+// for(let j = 0;j<=i;j++){
+//     if(b[i]*b[j]==a){
+//         nul2 += b[j]+" "+b[i]
+//     }
+// }
+// }
+// alert(nul2)
 
 // 1286
+// let a = prompt().split("\n").map(Number)
+// let min= a[0]
+// let max = a[0]
+// for(let i =0; i<a.length;i++){
+//     if(min>a[i]){
+//         min = a[i]
+//     }else if(max<a[i]){
+//         max = a[i]
+//     }
+// }
+// alert(max+"\n"+min)
+
 
 // 1294
+// let str = prompt("시저의 암호 입력");
+// let str2 = str;
+// let str3 = "";
+// let str4 = 0;
+// for (let i = 0; i < str.length; i++) {
+//   str4 = str[i].charCodeAt(0);
+//   if (str4 == 32) {
+//     str3 += String.fromCharCode(str4);
+//   }else{
+//     str3 += String.fromCharCode(str4 +3);
+//   }
+// }
+// console.log(str3);
 
 // 1295
-
+// let str = prompt("문장 입력");
+// let result = "";
+// let char;
+// for(let i=0; i<str.length; i++){
+//     if(str[i] === str[i].toUpperCase()){    
+//         result = result + str[i].toLowerCase()
+//     }
+//     else if(str[i] === str[i].toLowerCase()){
+//         result = result + str[i].toUpperCase()
+//     }
+// }
+// console.log(result)
 // 1675
+// let str = prompt("시저의 암호 입력");
+// let str2 = str;
+// let str3 = "";
+// let str4 = 0;
+// for (let i = 0; i < str.length; i++) {
+//   str4 = str[i].charCodeAt(0);
+//   if (str4 == 32) {
+//     str3 += String.fromCharCode(str4);
+//   }else{
+//     str3 += String.fromCharCode(str4 -3);
+//   }
+// }
+// console.log(str3);
