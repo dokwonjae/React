@@ -54,7 +54,7 @@ function AddEmp() {
   // nfn
   const newCustomer = () => { 
     setCustomer(initialCustomer); // 빈화면으로 폼(form)이 뜸
-    setSubmitted(false);
+    setSubmitted(true);
    }
 
   return (

@@ -17,6 +17,12 @@
       "cname": "장길산",
       "email": "jang@gmail.com",
       "phone": "010-1234-5678"
+    },
+    {
+      "cname": "전우치",
+      "email": "jun@daum.net",
+      "phone": "010-1234-5678",
+      "id": 4
     }
   ]
 }

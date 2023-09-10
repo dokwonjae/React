@@ -4,7 +4,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>안녕하세요 부서관리 시스템에 오신 것을 환영합니다.</div>
+    <div>안녕하세요 부서관리 시스템에 오신것을 환영합니다.</div>
   )
 }
 

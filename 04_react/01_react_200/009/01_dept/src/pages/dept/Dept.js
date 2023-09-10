@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 // 메뉴 라이브러리
 import { useParams, useNavigate } from "react-router-dom";
 import DeptService from './../../services/DeptService';
+import EmpService from './../../services/EmpService';
 
 function Dept() {
 
@@ -58,32 +59,33 @@ function Dept() {
     // 수정함수 : 클릭
     // axios 공통함수(update()) : axios.put("url/부서번호", 수정될객체)
     const updateDept = () => { 
-      DeptService.update(dept.id,dept)    // 수정요청(부서번호(id), 부서객체(dept))
-      .then((response)=>{
+      DeptService.update(dept.id, dept) // 수정요청(부서번호(id), 부서객체(dept))
+      .then((response)=>{               // 성공시 자동실행
         // 로그 찍기
-        console.log(response.data);
+        console.log(response.data); 
         // 화면에 수정 성공 메세지를 출력
-        setMessage("부서 수정이 성공하였습니다.")
+        setMessage("부서 수정이 성공하였습니다.");
       })
-      .catch((e)=>{                   // 실패시 자동실행
-        console.log(e);               // 에러 메시지 출력
-      })
-  }
+      .catch((e)=>{                    // 실패시 자동실행
+        console.log(e);                // 에러 메세지 출력
+      });
+     }
 
     // 삭제함수 : 클릭
     // axios 공통함수 : axios.delete(/dept/부서번호)
     const deleteDept = () => { 
-        DeptService.remove(dept.id) // 삭제 요청(id)
+        DeptService.remove(dept.id)   // 삭제 요청(id)
         .then((response)=>{
           // 로그 찍기
           console.log(response.data);
           // 삭제성공 후 자동으로 1st 페이지로 이동(전체 조회페이지)
+          // 사용법 : navigate("이동될페이지주소")
           navigate("/dept"); // 강제페이지 이동 함수 실행
         })
-        .catch((e)=>{
-          console.log(e);
-        })
-    }
+        .catch((e)=>{                 // 실패시 자동실행
+          console.log(e);             // 에러메세지 출력
+        });
+     }
 
   return (
     // TODO: 여기

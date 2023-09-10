@@ -1,79 +1,92 @@
 // Emp.js : 사원 상세조회 페이지
 // rfce
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import EmpService from "./../../services/EmpService"
+import EmpService from "../../services/EmpService";
 
 function Emp() {
   // TODO: 1) 상세조회 함수 작성하기
   // TODO: 변수명 : customer(객체), message
-  // TODO: EmpService.js (공통js 함수 : get(`/customer/${id}`) : )
+  // TODO: EmpService.js (공통js 함수 : http.get(`/customer/${id}`) : )
 
+  // TODO: 변수정의
+  // TODO: 이전 페이지에서 변수의(id) 값을(사원번호) 전송 : 받기
   const { id } = useParams(); // 전송된 값 받기 함수 호출
   let navigate = useNavigate(); // 페이지 강제 이동시키는 함수
 
+  // 임시 객체(초기화)
   const initialCustomer = {
-    id: "",
-    cname: "",
-    email: "",
-    phone: "",
+    id: "", // 번호(자동 생성)
+    cname: "", // 사원명
+    email: "", // 이메일
+    phone: "", // 폰번호
   };
-  let [customer, setCustomer] = useState(initialCustomer);
-  let [message, setMessage] = useState("");
+  let [customer, setCustomer] = useState(initialCustomer); // 벡엔드로 전송할 변수(insert 요청)
+  let [message, setMessage] = useState(""); // 수정버튼 클릭후 성공여부 메세지 변수
 
-  const getEmp = (id) => {
-    EmpService.get(id) // 상세조회 요청(id)
-      .then((response) => {
-        // 성공시 자동실행
-        setCustomer(response.data); // 벡엔드에서 보내준 결과 저장
-        // 로그 찍기
-        console.log(response.data);
-      })
-      .catch((e) => {
-        // 실패시 자동실행
-        console.log(e); // 에러메세지 출력
-      });
-  };
+  // TODO: 함수정의
+  // 상세조회 함수
+  const getCustomer = (id) => { 
+    EmpService.get(id)     // 상세조회 요청(id)
+    .then((response)=>{      // 성공시 자동실행
+      setCustomer(response.data); // 벡엔드에서 보내준 결과 저장
+      // 로그 찍기
+      console.log(response.data);
+    })
+    .catch((e)=>{            // 실패시 자동실행
+      console.log(e);        // 에러메세지 출력
+    })
+   }
 
+  // 화면이 뜰때 실행되는 함수 + id 값 변경시도 실행됨
   useEffect(() => {
-    if (id) {
-      getEmp(id); // 상세조회 함수 실행
+    if(id) {
+      getCustomer(id); // 상세조회(id) 실행
     }
   }, [id]);
 
+  // 역바인딩 함수
   const handleInputChange = (event) => {
     let attrValue = event.target.value; // 화면 입력값(객체의 속성값)
     let attrName = event.target.name; // 화면의 태그 이름(===객체의 속성명)
     // 스프레드 연산자로 속성의 값을 수정
     setCustomer({ ...customer, [attrName]: attrValue });
   };
+
   // 수정함수 : 클릭
-   const updateCustomer = () => { 
-      EmpService.update(customer.id,customer)    // 수정요청(부서번호(id), 부서객체(dept))
-      .then((response)=>{
-        // 로그 찍기
-        console.log(response.data);
-        // 화면에 수정 성공 메세지를 출력
-        setMessage("부서 수정이 성공하였습니다.")
-      })
-      .catch((e)=>{                   // 실패시 자동실행
-        console.log(e);               // 에러 메시지 출력
-      })
-  }
+  // TODO: 연습3) 수정함수를 완성하세요(부서수정페이지 참고)
+  // TODO: (힌트) EmpService.js (공통함수 : update() 함수정의)
+  const updateCustomer = () => {
+    // 수정요청(사원번호(id), 사원객체(customer))
+    EmpService.update(customer.id, customer) 
+    .then((response)=>{               // 성공시 자동실행
+      // 로그 찍기
+      console.log(response.data); 
+      // 화면에 수정 성공 메세지를 출력
+      setMessage("사원 수정이 성공하였습니다.");
+    })
+    .catch((e)=>{                    // 실패시 자동실행
+      console.log(e);                // 에러 메세지 출력
+    });
+  };
 
   // 삭제함수 : 클릭
-  const deleteCustomer = () => { 
-    EmpService.remove(customer.id) // 삭제 요청(id)
+  // TODO: 연습2) 삭제함수 완성하세요
+  // 강제 페이지 이동 url(전체 조회페이지) : /emp
+  const deleteCustomer = () => {
+    EmpService.remove(customer.id)   // 삭제 요청(id)
     .then((response)=>{
       // 로그 찍기
       console.log(response.data);
       // 삭제성공 후 자동으로 1st 페이지로 이동(전체 조회페이지)
+      // 사용법 : navigate("이동될페이지주소")
       navigate("/emp"); // 강제페이지 이동 함수 실행
     })
-    .catch((e)=>{
-      console.log(e);
-    })
-}
+    .catch((e)=>{                 // 실패시 자동실행
+      console.log(e);             // 에러메세지 출력
+    });
+  };
+
   return (
     //TODO: 여기
     <>

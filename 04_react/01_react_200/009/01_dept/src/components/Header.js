@@ -1,7 +1,7 @@
 // Header.js : 공통 메뉴(머리말) 컴포넌트
 // rfce
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom"; // 메뉴 라이브러리
 
 function Header() {
   return (
@@ -10,7 +10,7 @@ function Header() {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           {/* 메뉴 제목 시작 */}
-          <Link to="/" class="navbar-brand">
+          <Link to="/" class="navbar-brand" >
             Simple DMS
           </Link>
           {/* 메뉴 제목 끝 */}
@@ -83,7 +83,7 @@ function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/add-emp" class="dropdown-item">
+                    <Link to="/add-emp" class="dropdown-item" >
                       Add Emp
                     </Link>
                   </li>

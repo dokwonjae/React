@@ -76,10 +76,10 @@ function AddEmp() {
       <div className="form-group">
         <label htmlFor="manager">manager</label>
         <input
-          type="number" // 유효성
+          type="number"
           className="form-control"
           id="manager"
-          required // 필수 입력
+          required
           value={emp.manager}
           onChange={handleChange}
           name="manager"

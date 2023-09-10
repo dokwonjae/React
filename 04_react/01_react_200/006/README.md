@@ -22,4 +22,5 @@ import {Routes, Route} from "react-router-dom";
     <Route path="url" element={<컴포넌트명 />} />
 </Routes>
 
-# <a href="url">메뉴</a> 사용
+# 1) <a href="url">메뉴</a> 사용 (단점 : 성능 안좋음, 전체 새로고침)
+# 2) <Link to="url">메뉴</Link> (성능이 좋음 : 부분 화면 처리)

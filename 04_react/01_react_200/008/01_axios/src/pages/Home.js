@@ -38,7 +38,7 @@ function Home() {
         {dept.map((value, index) => (
           <li className="list-group-item" key={index}>{value.dname}</li>
         ))}
-        {/* <li class="list-group-item">An item</li> */}
+        {/* <li className="list-group-item">An item</li> */}
       </ul>
     </div>
   );

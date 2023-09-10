@@ -1,7 +1,7 @@
 // AddDept.js : dept 추가 페이지
 // rfce
 import React, {useState} from "react";
-import DeptService from "../../services/DeptService";
+import DeptService from './../../services/DeptService';
 
 function AddDept() {
 
@@ -32,33 +32,33 @@ function AddDept() {
   //  저장 함수 : 클릭 함수(onClick={함수명})
   // nfn
   // 벡엔드로 dept 객체를 저장 요청 (axios : 공통저장함수(create()))
-  const saveDept = () => {
+  const saveDept = () => { 
     // 임시 저장용 객체
     let data = {
-      dname : dept.dname, // 화면 입력값(부서명)
-      loc : dept.loc      // 화면 입력값(부서위치)
+      dname : dept.dname,     // 화면 입력값(부서명)
+      loc:    dept.loc        // 화면 입력값(부서위치)
     }
 
-    DeptService.create(data) // 저장 요청(부서객체)
-    .then((response)=>{
+    DeptService.create(data)  // 저장 요청(부서객체)
+    .then((response)=>{       // 성공하면 자동실행
       setDept(response.data); // 벡엔드에 저장한 객체를 받아서 변수에 저장
-      setSubmitted(true);     // 저장 버튼 클릭 + 저장 성공(false -> true)
+      setSubmitted(true);     // 저장 버튼 클릭 + 저장성공(false -> true)
       // 로그 찍기
       console.log(response.data);
     })
     .catch((e)=>{             // 실패하면 자동실행
       console.log(e);         // 에러 메세지 출력
     })
-  }
+   }
 
-  // 저장 버튼 클릭: 새로운 화면 전환(버튼이 1개 있는 화면)
-  // 3항 연산자의 다른 화면이 출력(submitted == true)
+  //  저장 버튼 클릭: 새로운 화면 전환(버튼이 1개 있는 화면)
+  //  3항 연산자의 다른 화면이 출력(submitted == true)
   // nfn
-  const newDept = () => {
+  const newDept = () => { 
     // 역할 : 변수 초기화 (객체, submitted = false)
     setDept(initialDept);
     setSubmitted(false);
-  }
+   }
 
   return (
     // TODO: 여기

@@ -1,18 +1,19 @@
 // EmpList.js : 연습) 사원 조회 페이지
 // rfce
-import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
-import EmpService from "../../services/EmpService";
+import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+
+import EmpService from "../../services/EmpService"; // 공통 js 함수 import
 
 function EmpList() {
   // TODO: 변수 정의 : customer , 검색함수(안에 내용물없이 만드세요)
   // TODO: EmpService.js (모든데이터 조회 : /customer)
   // TODO:               (검색어 조회 : `/customer?cname=${cname}`)
-  let [customer, setCustomer] = useState([]);
-  let [searchCname, setSearchCname] = useState("");
+  let [customer, setCustomer] = useState([]); // 벡엔드 데이터 받을 변수
+  let [searchCname, setSearchCname] = useState(""); // 검색어 변수
 
   // TODO: 함수 정의
-
+  // nfn
   const retrieveCustomer = () => {
     // axios 함수 : get() 요청 : (js 공통 함수를 만들고 공통함수명으로 호출)
     // .then() : 성공(자동실행)
@@ -30,25 +31,31 @@ function EmpList() {
       });
   };
 
+  //   화면이 뜰때 실행하는 함수
+  // useEffect(()=>{실행문},[])
   useEffect(() => {
     retrieveCustomer(); // 함수의 사용
   }, []);
 
+  //   검색 함수 : findByCname()
   const findByCname = () => {
-    EmpService.findByCname(searchCname)
-    .then((response)=> {
-      setCustomer(response.data)
-      console.log(response.data)
+    EmpService.findByCname(searchCname) // 검색어로 조회 요청
+    .then((response) => {
+      // 성공하면 자동실행
+      setCustomer(response.data); // 벡엔드에서 전달해준 데이터를(response.data) 저장
+      // 로그 찍기
+      console.log(response.data); // 벡엔드데이터(response.data)
     })
     .catch((e) => {
-      console.log(e)
-    })
+      // 실패하면 자동실행
+      console.log(e); // 에러메세지 출력
+    });
   };
 
+  //   역바인딩 함수
   const onChangeSearchCname = (event) => {
     setSearchCname(event.target.value); // 역바인딩 코딩
-  }
-
+  };
 
   return (
     // TODO: 여기
@@ -56,7 +63,7 @@ function EmpList() {
       <div className="row">
         {/* 제목 시작 */}
         <div className="col-md-12 mb-5 mt-5">
-          <h1>Emp List</h1>
+          <h1>Customer List No Page</h1>
         </div>
         {/* 제목 끝 */}
       </div>
